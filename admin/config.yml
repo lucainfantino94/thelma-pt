@@ -14,6 +14,8 @@ collections:
     label_singular: "Produto"
     description: "Cada produto é o seu próprio ficheiro — cria, edita ou apaga livremente."
     folder: "data/products"
+    extension: "json"
+    format: "json"
     create: true
     delete: true
     slug: "{{slug}}"
