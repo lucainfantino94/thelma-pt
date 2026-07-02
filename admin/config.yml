@@ -1,0 +1,55 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Aumenta a segurança: só utilizadores convidados pelo Netlify Identity
+# conseguem autenticar-se aqui — ver instruções no README.md.
+publish_mode: simple
+media_folder: "assets/img/produtos"
+public_folder: "/assets/img/produtos"
+
+collections:
+  - name: "products"
+    label: "Produtos"
+    files:
+      - label: "Catálogo de Produtos"
+        name: "catalogo"
+        file: "data/products.json"
+        fields:
+          - label: "Produtos"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.price}} €"
+            fields:
+              - label: "Identificador (único, sem espaços nem acentos)"
+                name: "id"
+                widget: "string"
+                pattern: ["^[a-z0-9-]+$", "Usa apenas letras minúsculas, números e hífens, ex: vestido-verao-azul"]
+              - label: "Nome do Produto"
+                name: "name"
+                widget: "string"
+              - label: "Categoria"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Roupas", value: "roupas" }
+                  - { label: "Bijuteria", value: "bijuteria" }
+                  - { label: "Sacos & Acessórios", value: "sacos" }
+                  - { label: "Cintos", value: "cintos" }
+              - label: "Preço (EUR)"
+                name: "price"
+                widget: "number"
+                value_type: "float"
+                min: 0
+              - label: "Descrição"
+                name: "description"
+                widget: "text"
+              - label: "Fotografia"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "Se ficar vazio, aparece um placeholder no site."
+              - label: "Mostrar em destaque na página inicial"
+                name: "featured"
+                widget: "boolean"
+                default: false

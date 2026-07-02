@@ -177,7 +177,20 @@
   <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
   <script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
 
-  <script src="data/products.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Redireciona automaticamente para o CMS após convite/login via Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
