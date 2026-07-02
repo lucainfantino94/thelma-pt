@@ -7,7 +7,8 @@
       "price": 41,
       "description": "Colete em algodão com bordado floral colorido feito à mão, forro em tons crus.",
       "image": "",
-      "featured": true
+      "featured": true,
+      "stock": true
     },
     {
       "id": "top-estampa-animal",
@@ -16,7 +17,8 @@
       "price": 24.9,
       "description": "Top ombro a ombro em estampa animal print, tecido fluido.",
       "image": "",
-      "featured": true
+      "featured": true,
+      "stock": true
     },
     {
       "id": "blusa-off-shoulder-crua",
@@ -25,7 +27,8 @@
       "price": 29.9,
       "description": "Blusa larga em tecido cru, manga ampla, ideal para o verão.",
       "image": "",
-      "featured": true
+      "featured": true,
+      "stock": true
     },
     {
       "id": "vestido-maxi-castanho",
@@ -34,7 +37,8 @@
       "price": 54.9,
       "description": "Vestido longo em tom castanho, alças finas, cinto incluído.",
       "image": "",
-      "featured": true
+      "featured": true,
+      "stock": true
     },
     {
       "id": "vestido-branco-bordado",
@@ -43,7 +47,8 @@
       "price": 59.9,
       "description": "Vestido midi branco com bordados artesanais, ideal para ocasiões especiais.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "top-bolinhas-preto",
@@ -52,7 +57,8 @@
       "price": 22.9,
       "description": "Top halter em padrão bolinhas, fecho no pescoço.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "colar-dourado-classico",
@@ -61,7 +67,8 @@
       "price": 14.9,
       "description": "Colar banhado a dourado, fecho ajustável, peça atemporal.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "brincos-argola-natural",
@@ -70,7 +77,8 @@
       "price": 9.9,
       "description": "Brincos em argola com acabamento natural, leves para o dia a dia.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "pulseira-conjunto-dourado",
@@ -79,7 +87,8 @@
       "price": 12.9,
       "description": "Conjunto de 3 pulseiras finas em tom dourado, combináveis.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "saco-palha-alcas-pele",
@@ -88,7 +97,8 @@
       "price": 44.9,
       "description": "Saco tote em palha natural entrançada com alças e detalhes em pele castanha.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "saco-tote-crochet",
@@ -97,7 +107,8 @@
       "price": 34.9,
       "description": "Saco tote em crochet natural, forro interior e bolso pequeno.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     },
     {
       "id": "cinto-couro-fivela-dourada",
@@ -106,7 +117,8 @@
       "price": 19.9,
       "description": "Cinto fino em pele genuína com fivela dourada, várias cores disponíveis.",
       "image": "",
-      "featured": false
+      "featured": false,
+      "stock": true
     }
   ]
 }

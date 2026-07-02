@@ -392,6 +392,24 @@ h1, h2, h3, h4 {
   color: var(--cream);
 }
 
+.add-to-cart.out-of-stock {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--beige);
+  color: var(--camel-dark);
+}
+
+.add-to-cart.out-of-stock:hover {
+  background: transparent;
+  color: var(--camel-dark);
+}
+
+.product-card.highlight .product-image {
+  outline: 2px solid var(--camel-dark);
+  outline-offset: 6px;
+  transition: outline-offset var(--transition);
+}
+
 .section-footer {
   text-align: center;
   margin-top: 56px;

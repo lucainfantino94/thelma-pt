@@ -48,8 +48,12 @@ collections:
                 name: "image"
                 widget: "image"
                 required: false
-                hint: "Se ficar vazio, aparece um placeholder no site."
+                hint: "Obrigatória para aparecer no feed do Google Merchant Center (política do Google)."
               - label: "Mostrar em destaque na página inicial"
                 name: "featured"
                 widget: "boolean"
                 default: false
+              - label: "Em stock"
+                name: "stock"
+                widget: "boolean"
+                default: true

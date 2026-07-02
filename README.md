@@ -19,6 +19,7 @@ thelma-pt/
 ├── admin/config.yml         configuration du CMS (champs du formulaire produit)
 ├── assets/img/produtos/     photos des produits ajoutées via le CMS
 ├── assets/icons/favicon.svg
+├── netlify/functions/product-feed.js   flux produit pour Google Merchant Center (/feed.xml)
 └── netlify.toml           config de déploiement Netlify
 ```
 
@@ -93,7 +94,28 @@ Le catalogue (`data/products.json`) est éditable via une interface d'administra
 
 **Sécurité** : aucune base de données ni serveur à protéger — l'authentification est gérée par Netlify Identity (accès uniquement sur invitation), et chaque modification passe par Git Gateway avec l'historique complet dans GitHub (rien n'est jamais perdu, tout est réversible via `git revert`).
 
-## 5. Remplacer le contenu par le vrai contenu Thelma
+## 5. Google Merchant Center (pour de futures campagnes Shopping)
+
+Le site génère automatiquement un **flux produit** (format Google Shopping / RSS) à partir de `data/products.json`, via une fonction serverless Netlify (`netlify/functions/product-feed.js`), exposé à une URL fixe :
+
+```
+https://<ton-site>.netlify.app/feed.xml
+```
+
+Ce flux se met à jour tout seul à chaque modification de produit via `/admin` — pas besoin de ressaisir quoi que ce soit dans Google. C'est le sens du "centraliser" : `data/products.json` reste la seule source de vérité, utilisée à la fois par le site et par Google Shopping.
+
+⚠️ **Seuls les produits avec une vraie photo apparaissent dans le flux** (exigence de Google Merchant Center — les images placeholder/génériques sont interdites par leur politique et entraînent un refus).
+
+### Étapes à faire toi-même (compte Google, hors de portée pour moi)
+
+1. Créer un compte sur [merchants.google.com](https://merchants.google.com).
+2. **Business information → Website** : renseigner `https://<ton-site>.netlify.app`, puis vérifier la propriété du site. La méthode la plus simple pour un site statique est la **balise HTML meta** : Google te donne un tag `<meta name="google-site-verification" content="...">` — donne-le-moi et je l'ajoute dans le `<head>` de `index.html` (simple modif de fichier, pas de création de compte).
+3. Une fois vérifié : **Products → Feeds → Add feed → Scheduled fetch**, coller l'URL `https://<ton-site>.netlify.app/feed.xml`, choisir une fréquence (quotidienne recommandée).
+4. Compléter les informations obligatoires du compte (politique de retour, délais de livraison, infos fiscales/entreprise) — sans ça, Google refuse les produits même si le flux est techniquement correct.
+5. Corriger les éventuels refus dans **Diagnostics** (cause la plus fréquente ici : produit sans photo réelle → ajoute la photo via `/admin`).
+6. Pour lancer des campagnes Shopping plus tard : **Merchant Center → Linked accounts → Google Ads**, relier ton compte Google Ads (toujours une action de ton côté, liée à la facturation).
+
+## 6. Remplacer le contenu par le vrai contenu Thelma
 
 - **Produits, prix, descriptions, photos** : via `/admin` une fois Netlify configuré (recommandé), ou directement dans `data/products.json`.
 - **Textes de marque** (accueil, à propos) : à éditer directement dans `index.html` / `sobre.html`.

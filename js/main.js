@@ -71,26 +71,29 @@ function productCardHTML(product) {
   const name = escapeHtml(product.name);
   const description = escapeHtml(product.description);
   const image = escapeHtml(product.image || "");
+  const id = escapeHtml(product.id);
+  const outOfStock = product.stock === false;
   const imageContent = product.image
     ? `<img src="${image}" alt="${name}">`
     : `<span>Foto em breve</span>`;
 
   return `
-    <article class="product-card">
+    <article class="product-card" id="produto-${id}">
       <div class="product-image">${imageContent}</div>
       <span class="product-category">${escapeHtml(CATEGORY_LABELS[product.category] || product.category)}</span>
       <h4>${name}</h4>
       <p class="product-price">${formatPrice(product.price)}</p>
       <button
-        class="add-to-cart snipcart-add-item"
-        data-item-id="${escapeHtml(product.id)}"
+        class="add-to-cart snipcart-add-item${outOfStock ? " out-of-stock" : ""}"
+        ${outOfStock ? "disabled" : ""}
+        data-item-id="${id}"
         data-item-name="${name}"
         data-item-price="${product.price}"
         data-item-url="/loja.html"
         data-item-description="${description}"
         data-item-image="${image}"
       >
-        Adicionar ao carrinho
+        ${outOfStock ? "Esgotado" : "Adicionar ao carrinho"}
       </button>
     </article>
   `;
@@ -101,9 +104,19 @@ function renderProducts(containerId, products) {
   container.innerHTML = products.map(productCardHTML).join("");
 }
 
+function scrollToHashProduct() {
+  if (!location.hash) return;
+  const el = document.querySelector(location.hash);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  el.classList.add("highlight");
+  setTimeout(() => el.classList.remove("highlight"), 1600);
+}
+
 function initShopPage() {
   const filterButtons = document.querySelectorAll(".filter-btn");
   renderProducts("shop-products", PRODUCTS);
+  scrollToHashProduct();
 
   filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
