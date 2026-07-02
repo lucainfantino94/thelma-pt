@@ -4,6 +4,13 @@
 
 [functions]
   directory = "netlify/functions"
+  included_files = ["data/products/**"]
+
+[[redirects]]
+  from = "/data/products.json"
+  to = "/.netlify/functions/products"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/feed.xml"

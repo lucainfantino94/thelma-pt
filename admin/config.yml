@@ -11,49 +11,57 @@ public_folder: "/assets/img/produtos"
 collections:
   - name: "products"
     label: "Produtos"
-    files:
-      - label: "Catálogo de Produtos"
-        name: "catalogo"
-        file: "data/products.json"
-        fields:
-          - label: "Produtos"
-            name: "products"
-            widget: "list"
-            summary: "{{fields.name}} — {{fields.price}} €"
-            fields:
-              - label: "Identificador (único, sem espaços nem acentos)"
-                name: "id"
-                widget: "string"
-                pattern: ["^[a-z0-9-]+$", "Usa apenas letras minúsculas, números e hífens, ex: vestido-verao-azul"]
-              - label: "Nome do Produto"
-                name: "name"
-                widget: "string"
-              - label: "Categoria"
-                name: "category"
-                widget: "select"
-                options:
-                  - { label: "Roupas", value: "roupas" }
-                  - { label: "Bijuteria", value: "bijuteria" }
-                  - { label: "Sacos & Acessórios", value: "sacos" }
-                  - { label: "Cintos", value: "cintos" }
-              - label: "Preço (EUR)"
-                name: "price"
-                widget: "number"
-                value_type: "float"
-                min: 0
-              - label: "Descrição"
-                name: "description"
-                widget: "text"
-              - label: "Fotografia"
-                name: "image"
-                widget: "image"
-                required: false
-                hint: "Obrigatória para aparecer no feed do Google Merchant Center (política do Google)."
-              - label: "Mostrar em destaque na página inicial"
-                name: "featured"
-                widget: "boolean"
-                default: false
-              - label: "Em stock"
-                name: "stock"
-                widget: "boolean"
-                default: true
+    label_singular: "Produto"
+    description: "Cada produto é o seu próprio ficheiro — cria, edita ou apaga livremente."
+    folder: "data/products"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    summary: "{{name}} — {{price}} €"
+    view_groups:
+      - label: "Categoria"
+        field: category
+    view_filters:
+      - label: "Sem fotografia"
+        field: image
+        pattern: ""
+      - label: "Em destaque"
+        field: featured
+        pattern: true
+      - label: "Esgotado"
+        field: stock
+        pattern: false
+    fields:
+      - label: "Fotografia"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Obrigatória para aparecer no feed do Google Merchant Center (política do Google)."
+      - label: "Nome do Produto"
+        name: "name"
+        widget: "string"
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Roupas", value: "roupas" }
+          - { label: "Bijuteria", value: "bijuteria" }
+          - { label: "Sacos & Acessórios", value: "sacos" }
+          - { label: "Cintos", value: "cintos" }
+      - label: "Preço (EUR)"
+        name: "price"
+        widget: "number"
+        value_type: "float"
+        min: 0
+      - label: "Descrição"
+        name: "description"
+        widget: "text"
+      - label: "Mostrar em destaque na página inicial"
+        name: "featured"
+        widget: "boolean"
+        default: false
+      - label: "Em stock"
+        name: "stock"
+        widget: "boolean"
+        default: true

@@ -14,24 +14,28 @@ thelma-pt/
 ├── contacto.html          page contact (formulaire prêt pour Netlify Forms)
 ├── css/style.css         design system (couleurs, typographie, composants)
 ├── js/main.js             menu mobile, chargement des produits, filtres, panier
-├── data/products.json      catalogue produits — géré via /admin (CMS) ou à la main
+├── data/products/*.json    UN FICHIER PAR PRODUIT — géré via /admin (CMS)
 ├── admin/index.html         interface d'administration (Decap CMS)
 ├── admin/config.yml         configuration du CMS (champs du formulaire produit)
 ├── assets/img/produtos/     photos des produits ajoutées via le CMS
 ├── assets/icons/favicon.svg
+├── netlify/functions/products.js        recombine data/products/*.json → /data/products.json
 ├── netlify/functions/product-feed.js   flux produit pour Google Merchant Center (/feed.xml)
-└── netlify.toml           config de déploiement Netlify
+└── netlify.toml           config de déploiement Netlify (redirects + functions)
 ```
+
+Le catalogue est stocké en **un fichier JSON par produit** (`data/products/<slug>.json`) plutôt qu'un seul gros fichier — c'est ce qui permet à `/admin` d'afficher une vraie liste de produits (avec vignette photo, recherche, tri, filtres par catégorie/destaque/stock) au lieu d'un formulaire géant. Une fonction serverless (`netlify/functions/products.js`) recombine ces fichiers à la volée pour le site et pour le flux Google — `data/products.json` n'existe plus en tant que fichier, c'est une route calculée (voir le redirect dans `netlify.toml`).
 
 ## 1. Développer en local
 
-Aucune installation n'est nécessaire, ce sont des fichiers statiques. Comme le site charge les produits via `fetch()`, il faut un vrai serveur local (pas juste ouvrir le fichier) :
+Le site dépend de fonctions serverless (recombinaison des produits, flux Google) et de redirections définies dans `netlify.toml`. Un simple serveur statique (`npx serve`) ne suffit donc plus — il faut utiliser **Netlify CLI**, qui reproduit fidèlement l'environnement Netlify en local :
 
 ```bash
 cd thelma-pt
-npx serve .
-# ou : python -m http.server 5500
+npx netlify-cli dev
 ```
+
+Le site sera sur `http://localhost:8888` (ou le port indiqué dans le terminal), avec `/data/products.json`, `/feed.xml` et `/admin` tous fonctionnels comme en production. Pas besoin de compte Netlify pour ça — seul le login réel dans `/admin` (Identity) nécessite d'être sur le site déployé.
 
 ## 2. Tester en ligne avec GitHub Pages
 
@@ -82,7 +86,7 @@ Si Thelma préfère continuer à gérer les commandes en DM/WhatsApp plutôt qu'
 
 ## 4. Gérer les produits sans toucher au code (Decap CMS)
 
-Le catalogue (`data/products.json`) est éditable via une interface d'administration à `/admin`, sans connaissances techniques : ajouter/modifier/supprimer un produit, changer prix, catégorie, description, photo. Chaque modification crée un commit Git automatiquement et republie le site.
+Le catalogue est éditable via une interface d'administration à `/admin`, sans connaissances techniques : chaque produit apparaît comme une carte individuelle avec sa vignette photo, filtrable par catégorie/mise en avant/stock, et peut être ajouté/modifié/supprimé en un clic. Chaque modification crée un commit Git automatiquement et republie le site.
 
 **Cette fonctionnalité nécessite Netlify** (elle utilise Netlify Identity + Git Gateway). Étapes à faire une seule fois, dans le dashboard Netlify, après avoir connecté le site (étape 3) :
 
@@ -117,7 +121,7 @@ Ce flux se met à jour tout seul à chaque modification de produit via `/admin` 
 
 ## 6. Remplacer le contenu par le vrai contenu Thelma
 
-- **Produits, prix, descriptions, photos** : via `/admin` une fois Netlify configuré (recommandé), ou directement dans `data/products.json`.
+- **Produits, prix, descriptions, photos** : via `/admin` une fois Netlify configuré (recommandé), ou directement dans `data/products/<slug>.json`.
 - **Textes de marque** (accueil, à propos) : à éditer directement dans `index.html` / `sobre.html`.
 - **Contact** : remplacer `ola@thelma.pt` par la vraie adresse, ajouter un numéro WhatsApp si besoin.
 - **Réseaux sociaux** : les liens pointent déjà vers `instagram.com/thelma.pt`.

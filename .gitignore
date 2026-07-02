@@ -3,3 +3,6 @@ Thumbs.db
 node_modules/
 .vscode/
 .claude/
+
+# Local Netlify folder
+.netlify
