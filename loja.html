@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja — THELMA.PT</title>
+  <meta name="description" content="Descobre a coleção Thelma: roupas, bijuteria, sacos e cintos boho-chic." />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="announcement">🇵🇹 Marca Portuguesa · Envio Internacional · CTT Expresso</div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+      <a href="index.html" class="logo">THELMA<span>.</span></a>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="loja.html" class="active">Loja</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-btn" href="https://www.instagram.com/thelma.pt/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <button class="icon-btn snipcart-checkout" aria-label="Carrinho">
+          🛍<span class="cart-count snipcart-items-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Fechar menu">×</button>
+    <a href="index.html">Início</a>
+    <a href="loja.html">Loja</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <section class="page-banner">
+    <span class="eyebrow">Coleção Completa</span>
+    <h1>A Loja</h1>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="filters">
+        <button class="filter-btn active" data-category="todos">Todos</button>
+        <button class="filter-btn" data-category="roupas">Roupas</button>
+        <button class="filter-btn" data-category="bijuteria">Bijuteria</button>
+        <button class="filter-btn" data-category="sacos">Sacos & Acessórios</button>
+        <button class="filter-btn" data-category="cintos">Cintos</button>
+      </div>
+      <div id="shop-products" class="products-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo">THELMA</a>
+          <p style="margin-top:16px; font-size:0.85rem; max-width:280px;">Peças de vestuário e acessórios com alma, inspiradas no estilo boho-chic. Marca portuguesa, envio internacional.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Categorias</h5>
+          <ul>
+            <li><a href="#" data-category-link="roupas">Roupas</a></li>
+            <li><a href="#" data-category-link="bijuteria">Bijuteria</a></li>
+            <li><a href="#" data-category-link="sacos">Sacos & Acessórios</a></li>
+            <li><a href="#" data-category-link="cintos">Cintos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/thelma.pt/" target="_blank" rel="noopener">Instagram @thelma.pt</a></li>
+            <li><a href="mailto:ola@thelma.pt">ola@thelma.pt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Thelma.pt — Todos os direitos reservados.</span>
+        <span>Site criado com carinho em Portugal 🇵🇹</span>
+      </div>
+    </div>
+  </footer>
+
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.css" />
+  <script async src="https://cdn.snipcart.com/themes/v3.7.1/default/snipcart.js"></script>
+
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

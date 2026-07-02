@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — THELMA.PT</title>
+  <meta name="description" content="Fala com a Thelma: dúvidas sobre encomendas, envios e trocas." />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="announcement">🇵🇹 Marca Portuguesa · Envio Internacional · CTT Expresso</div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="nav-toggle" aria-label="Abrir menu">☰</button>
+      <a href="index.html" class="logo">THELMA<span>.</span></a>
+      <nav>
+        <ul class="main-nav">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="loja.html">Loja</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contacto.html" class="active">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="icon-btn" href="https://www.instagram.com/thelma.pt/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <button class="icon-btn snipcart-checkout" aria-label="Carrinho">
+          🛍<span class="cart-count snipcart-items-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Fechar menu">×</button>
+    <a href="index.html">Início</a>
+    <a href="loja.html">Loja</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <section class="page-banner">
+    <span class="eyebrow">Fala Connosco</span>
+    <h1>Contacto</h1>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="contact-form">
+        <!--
+          Formulário pronto para o Netlify Forms: basta manter os atributos
+          name="contact" e data-netlify="true" depois de publicar no Netlify.
+          Sem isso (ex: no GitHub Pages), o formulário não envia dados —
+          serve apenas de pré-visualização visual.
+        -->
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit" class="btn btn-solid">Enviar Mensagem</button>
+        </form>
+      </div>
+      <div class="contact-details">
+        <div class="contact-info-item">
+          <h4>Instagram</h4>
+          <a href="https://www.instagram.com/thelma.pt/" target="_blank" rel="noopener">@thelma.pt</a>
+        </div>
+        <div class="contact-info-item">
+          <h4>Email</h4>
+          <a href="mailto:ola@thelma.pt">ola@thelma.pt</a>
+        </div>
+        <div class="contact-info-item">
+          <h4>Envios</h4>
+          <p>Envios para Portugal e internacional via CTT Expresso.</p>
+        </div>
+        <div class="contact-info-item">
+          <h4>Trocas e Devoluções</h4>
+          <p>Contacta-nos via Instagram ou email até 14 dias após a receção da encomenda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo">THELMA</a>
+          <p style="margin-top:16px; font-size:0.85rem; max-width:280px;">Peças de vestuário e acessórios com alma, inspiradas no estilo boho-chic. Marca portuguesa, envio internacional.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="loja.html">Loja</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Categorias</h5>
+          <ul>
+            <li><a href="loja.html#roupas">Roupas</a></li>
+            <li><a href="loja.html#bijuteria">Bijuteria</a></li>
+            <li><a href="loja.html#sacos">Sacos & Acessórios</a></li>
+            <li><a href="loja.html#cintos">Cintos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contacto</h5>
+          <ul>
+            <li><a href="https://www.instagram.com/thelma.pt/" target="_blank" rel="noopener">Instagram @thelma.pt</a></li>
+            <li><a href="mailto:ola@thelma.pt">ola@thelma.pt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Thelma.pt — Todos os direitos reservados.</span>
+        <span>Site criado com carinho em Portugal 🇵🇹</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
